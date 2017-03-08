@@ -66,3 +66,27 @@ class Item
     "#{@name}, #{@sell_in}, #{@quality}"
   end
 end
+
+class Other < Item
+  def initialize(name, sell_in, quality)
+    super(name, sell_in, quality)
+  end
+end
+
+class Sulfuras < Item
+  def initialize(name, sell_in, quality)
+    super(name, sell_in, quality)
+  end
+end
+
+class AgedBrie < Item
+  def initialize(name, sell_in, quality)
+    super(name, sell_in, quality)
+  end
+end
+
+class Backstage < Item
+  def initialize(name, sell_in, quality)
+    super(name, sell_in, quality)
+  end
+end
