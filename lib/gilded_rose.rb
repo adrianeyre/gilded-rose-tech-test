@@ -6,9 +6,7 @@ class GildedRose
 
   def update_quality()
     @items.each do |item|
-      item.increase_quality_for_sale
-      item.decrease_sell_in
-      item.quality_amount if item.sell_in < 0
+      item.calculate
     end
   end
 end
@@ -27,9 +25,15 @@ class Item
   end
 end
 
-class Other < Item
+class ItemDefauts < Item
   def initialize(name, sell_in, quality)
     super(name, sell_in, quality)
+  end
+
+  def calculate
+    self.increase_quality_for_sale
+    self.decrease_sell_in
+    self.quality_amount if self.sell_in < 0
   end
 
   def increase_quality(amount=1)
@@ -48,88 +52,32 @@ class Other < Item
     self.decrease_quality(amount)
   end
 
+  def increase_quality_for_sale; end
+end
+
+class Other < ItemDefauts
   def increase_quality_for_sale
     self.decrease_quality
   end
 end
 
-class Sulfuras < Item
-  def initialize(name, sell_in, quality)
-    super(name, sell_in, quality)
-  end
-
-  def increase_quality(amount=1)
-    self.quality += amount if self.quality < 50
-  end
-
-  def decrease_quality(amount=1)
-    self.quality -= amount if self.quality > 0
-  end
-
-  def decrease_sell_in(amount=1)
-
-  end
-
-  def quality_amount(amount=1)
-
-  end
-
-  def increase_quality_for_sale
-
-  end
+class Sulfuras < ItemDefauts
+  def decrease_sell_in(amount=1); end
+  def quality_amount(amount=1); end
 end
 
-class AgedBrie < Item
-  def initialize(name, sell_in, quality)
-    super(name, sell_in, quality)
-  end
-
-  def increase_quality(amount=1)
-    self.quality += amount if self.quality < 50
-  end
-
-  def decrease_quality(amount=1)
-    self.quality -= amount
-  end
-
-  def decrease_sell_in(amount=1)
-    self.sell_in -= amount
-  end
-
-  def quality_amount(amount=1)
-    self.increase_quality(amount)
-  end
-
+class AgedBrie < ItemDefauts
   def increase_quality_for_sale
     self.increase_quality
   end
 end
 
-class Backstage < Item
-  def initialize(name, sell_in, quality)
-    super(name, sell_in, quality)
-  end
-
-  def increase_quality(amount=1)
-    self.quality += amount if self.quality < 50
-  end
-
-  def decrease_quality(amount=1)
-    self.quality -= amount
-  end
-
-  def decrease_sell_in(amount=1)
-    self.sell_in -= amount
-  end
-
-  def quality_amount(amount=1)
-
-  end
+class Backstage < ItemDefauts
+  def quality_amount(amount=1); end
 
   def increase_quality_for_sale
     self.increase_quality
     self.increase_quality if self.sell_in < 11
     self.increase_quality if self.sell_in < 6
   end
-
 end
