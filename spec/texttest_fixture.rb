@@ -1,7 +1,4 @@
-#!/usr/bin/ruby -w
-
-# require File.join(File.dirname(__FILE__), 'gilded_rose')
-require_relative 'lib/gilded_rose'
+require_relative '../lib/gilded_rose'
 
 puts "OMGHAI!"
 items = [
