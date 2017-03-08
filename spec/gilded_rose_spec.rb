@@ -82,8 +82,5 @@ describe GildedRose do
       expect(@items[10].sell_in).to eq 2
       expect(@items[10].quality).to eq 4
     end
-
   end
-
-
 end
