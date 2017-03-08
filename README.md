@@ -24,13 +24,13 @@ Feel free to make any changes to the UpdateQuality method and add any new code a
 
 ## <a name="Install">Installation</a>
 * To clone the repo
-```shell
+```
 $ git clone https://github.com/adrianeyre/gilded-rose-tech-test
 $ cd gilded-rose-tech-test
 ```
 
 ## <a name="Rspec">Rspec Tests</a>
-```shell
+```
 $ cd gilded-rose-tech-test
 $ rspec
 ```
