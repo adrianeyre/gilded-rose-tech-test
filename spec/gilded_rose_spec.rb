@@ -5,7 +5,7 @@ describe GildedRose do
     @items = [Other.new("foo", 0, 0),
               Other.new("+5 Dexterity Vest", 10, 20),
               AgedBrie.new("Aged Brie", 2, 0),
-              Other.new("Aged Brie", 50, 50),
+              AgedBrie.new("Aged Brie", 50, 50),
               Other.new("Elixir of the Mongoose", 5, 7),
               Sulfuras.new("Sulfuras, Hand of Ragnaros", 0, 80),
               Sulfuras.new("Sulfuras, Hand of Ragnaros", -1, 80),

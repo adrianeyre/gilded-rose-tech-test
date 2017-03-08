@@ -6,41 +6,9 @@ class GildedRose
 
   def update_quality()
     @items.each do |item|
-      if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
-        if item.quality > 0
-          if item.name != "Sulfuras, Hand of Ragnaros"
-            item.decrease_quality
-          end
-        end
-      else
-        item.increase_quality
-        if item.name == "Backstage passes to a TAFKAL80ETC concert"
-          if item.sell_in < 11
-            item.increase_quality
-          end
-          if item.sell_in < 6
-            item.increase_quality
-          end
-        end
-      end
-
+      item.increase_quality_for_sale
       item.decrease_sell_in
-
-      if item.sell_in < 0
-        if item.name != "Aged Brie"
-          if item.name != "Backstage passes to a TAFKAL80ETC concert"
-            if item.quality > 0
-              if item.name != "Sulfuras, Hand of Ragnaros"
-                item.decrease_quality
-              end
-            end
-          else
-            item.decrease_quality
-          end
-        else
-          item.increase_quality
-        end
-      end
+      item.quality_amount if item.sell_in < 0
     end
   end
 end
@@ -75,6 +43,14 @@ class Other < Item
   def decrease_sell_in(amount=1)
     self.sell_in -= amount
   end
+
+  def quality_amount(amount=1)
+    self.decrease_quality(amount)
+  end
+
+  def increase_quality_for_sale
+    self.decrease_quality
+  end
 end
 
 class Sulfuras < Item
@@ -91,6 +67,14 @@ class Sulfuras < Item
   end
 
   def decrease_sell_in(amount=1)
+
+  end
+
+  def quality_amount(amount=1)
+
+  end
+
+  def increase_quality_for_sale
 
   end
 end
@@ -111,6 +95,14 @@ class AgedBrie < Item
   def decrease_sell_in(amount=1)
     self.sell_in -= amount
   end
+
+  def quality_amount(amount=1)
+    self.increase_quality(amount)
+  end
+
+  def increase_quality_for_sale
+    self.increase_quality
+  end
 end
 
 class Backstage < Item
@@ -129,4 +121,15 @@ class Backstage < Item
   def decrease_sell_in(amount=1)
     self.sell_in -= amount
   end
+
+  def quality_amount(amount=1)
+
+  end
+
+  def increase_quality_for_sale
+    self.increase_quality
+    self.increase_quality if self.sell_in < 11
+    self.increase_quality if self.sell_in < 6
+  end
+
 end
