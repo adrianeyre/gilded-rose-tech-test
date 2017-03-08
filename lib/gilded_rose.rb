@@ -9,37 +9,32 @@ class GildedRose
       if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
         if item.quality > 0
           if item.name != "Sulfuras, Hand of Ragnaros"
-            # item.quality = item.quality - 1
             item.decrease_quality
           end
         end
       else
-        if item.quality < 50
-          item.quality = item.quality + 1
-          if item.name == "Backstage passes to a TAFKAL80ETC concert"
-            if item.sell_in < 11
-              item.increase_quality
-            end
-            if item.sell_in < 6
-              item.increase_quality
-            end
+        item.increase_quality
+        if item.name == "Backstage passes to a TAFKAL80ETC concert"
+          if item.sell_in < 11
+            item.increase_quality
+          end
+          if item.sell_in < 6
+            item.increase_quality
           end
         end
       end
-      if item.name != "Sulfuras, Hand of Ragnaros"
-        item.sell_in = item.sell_in - 1
-      end
+
+      item.decrease_sell_in
+
       if item.sell_in < 0
         if item.name != "Aged Brie"
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
             if item.quality > 0
               if item.name != "Sulfuras, Hand of Ragnaros"
-                # item.quality = item.quality - 1
                 item.decrease_quality
               end
             end
           else
-            # item.quality = item.quality - item.quality
             item.decrease_quality
           end
         else
@@ -74,7 +69,11 @@ class Other < Item
   end
 
   def decrease_quality(amount=1)
-    self.quality -= amount
+    self.quality -= amount if self.quality > 0
+  end
+
+  def decrease_sell_in(amount=1)
+    self.sell_in -= amount
   end
 end
 
@@ -88,7 +87,11 @@ class Sulfuras < Item
   end
 
   def decrease_quality(amount=1)
-    self.quality -= amount
+    self.quality -= amount if self.quality > 0
+  end
+
+  def decrease_sell_in(amount=1)
+
   end
 end
 
@@ -104,6 +107,10 @@ class AgedBrie < Item
   def decrease_quality(amount=1)
     self.quality -= amount
   end
+
+  def decrease_sell_in(amount=1)
+    self.sell_in -= amount
+  end
 end
 
 class Backstage < Item
@@ -117,5 +124,9 @@ class Backstage < Item
 
   def decrease_quality(amount=1)
     self.quality -= amount
+  end
+
+  def decrease_sell_in(amount=1)
+    self.sell_in -= amount
   end
 end
