@@ -11,7 +11,8 @@ describe GildedRose do
               Sulfuras.new("Sulfuras, Hand of Ragnaros", -1, 80),
               Backstage.new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
               Backstage.new("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-              Backstage.new("Backstage passes to a TAFKAL80ETC concert", 5, 49)]
+              Backstage.new("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+              Conjured.new("Conjured Mana Cake", 3, 6)]
     GildedRose.new(@items).update_quality()
   end
 
@@ -74,6 +75,12 @@ describe GildedRose do
       expect(@items[9].name).to eq "Backstage passes to a TAFKAL80ETC concert"
       expect(@items[9].sell_in).to eq 4
       expect(@items[9].quality).to eq 50
+    end
+
+    it "item = Conjured Mana Cake" do
+      expect(@items[10].name).to eq "Conjured Mana Cake"
+      expect(@items[10].sell_in).to eq 2
+      expect(@items[10].quality).to eq 4
     end
 
   end

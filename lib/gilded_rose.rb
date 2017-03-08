@@ -5,10 +5,9 @@ class GildedRose
   end
 
   def update_quality()
-    @items.each do |item|
-      item.calculate
-    end
+    @items.each {|item| item.calculate}
   end
+
 end
 
 class Item
@@ -79,5 +78,15 @@ class Backstage < ItemDefauts
     self.increase_quality
     self.increase_quality if self.sell_in < 11
     self.increase_quality if self.sell_in < 6
+  end
+end
+
+class Conjured < ItemDefauts
+  def decrease_quality(amount=2)
+    self.quality -= amount if self.quality > 0
+  end
+
+  def increase_quality_for_sale
+    self.decrease_quality
   end
 end
