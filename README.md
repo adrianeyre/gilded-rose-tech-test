@@ -5,7 +5,6 @@
 ## Index
 * [Installation] (#Install)
 * [Rspec Tests] (#Rspec)
-* [Usage] (#Usage)
 
 ## Challenege
 ```
