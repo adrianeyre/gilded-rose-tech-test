@@ -9,10 +9,6 @@ class ItemDefauts < Item
   DecreaseSellInDefault = 1
   QualityAmount = 1
 
-  def initialize(name, sell_in, quality)
-    super(name, sell_in, quality)
-  end
-
   def calculate
     self.quality_for_sale
     self.decrease_sell_in
