@@ -30,7 +30,7 @@ class ItemDefauts < Item
   end
 
   def calculate
-    self.increase_quality_for_sale
+    self.quality_for_sale
     self.decrease_sell_in
     self.quality_amount if self.sell_in < 0
   end
@@ -51,11 +51,11 @@ class ItemDefauts < Item
     self.decrease_quality(amount)
   end
 
-  def increase_quality_for_sale; end
+  def quality_for_sale; end
 end
 
 class Other < ItemDefauts
-  def increase_quality_for_sale
+  def quality_for_sale
     self.decrease_quality
   end
 end
@@ -66,7 +66,7 @@ class Sulfuras < ItemDefauts
 end
 
 class AgedBrie < ItemDefauts
-  def increase_quality_for_sale
+  def quality_for_sale
     self.increase_quality
   end
 end
@@ -74,7 +74,7 @@ end
 class Backstage < ItemDefauts
   def quality_amount(amount=1); end
 
-  def increase_quality_for_sale
+  def quality_for_sale
     self.increase_quality
     self.increase_quality if self.sell_in < 11
     self.increase_quality if self.sell_in < 6
@@ -82,7 +82,7 @@ class Backstage < ItemDefauts
 end
 
 class Conjured < ItemDefauts
-  def increase_quality_for_sale
+  def quality_for_sale
     self.decrease_quality(2)
   end
 end
