@@ -82,11 +82,7 @@ class Backstage < ItemDefauts
 end
 
 class Conjured < ItemDefauts
-  def decrease_quality(amount=2)
-    self.quality -= amount if self.quality > 0
-  end
-
   def increase_quality_for_sale
-    self.decrease_quality
+    self.decrease_quality(2)
   end
 end
